@@ -1,6 +1,6 @@
 {
   "name": "@tinasoft/miniapp-host-demo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Host mini apps inside a React Native app: WebView mini apps with a secure token bridge and log forwarding, and React Native mini apps loaded with Re.Pack / Module Federation.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

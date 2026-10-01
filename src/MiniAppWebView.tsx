@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { WebView, WebViewMessageEvent } from 'react-native-webview';
 import { BRIDGE_SCRIPT } from './bridge';
 import { Header } from './Header';
-import { consoleLog } from './log';
+import { consoleLog, redact } from './log';
 import type { GetSession, OnLog } from './types';
 
 export type WebMiniApp = {
@@ -66,7 +66,7 @@ export const MiniAppWebView = memo(function Screen({
       } else if (msg?.type === 'getSession') {
         try {
           const session = await getSession(app.id);
-          onLog('host', 'log', `gửi session cho ${app.id}:`, session);
+          onLog('host', 'log', `gửi session cho ${app.id}:`, redact(session));
           ref.current?.injectJavaScript(
             `window.host && window.host._deliver(${JSON.stringify(session)}); true;`,
           );

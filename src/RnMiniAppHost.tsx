@@ -12,7 +12,7 @@ import {
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Header } from './Header';
-import { consoleLog } from './log';
+import { consoleLog, redact } from './log';
 import type { GetSession, LogLevel, MiniAppProps, OnLog, Session } from './types';
 
 export type RnMiniApp = { id: string; name: string };
@@ -73,7 +73,7 @@ export function RnMiniAppHost({
     Promise.resolve(getSession(app.id)).then(
       s => {
         if (!alive) return;
-        onLog('host', 'log', `gửi session cho ${app.id}:`, s);
+        onLog('host', 'log', `gửi session cho ${app.id}:`, redact(s));
         setSession(s);
       },
       err => onLog('host', 'error', `không lấy được session cho ${app.id}:`, String(err)),

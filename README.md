@@ -5,7 +5,7 @@ Open mini apps inside your React Native app, super-app style.
 - **Web mini apps** in a WebView, with a token bridge that only answers the mini app's own origin, navigation locked to that origin, and the mini app's `console` / JS errors forwarded to the host.
 - **React Native mini apps** loaded at runtime with [Re.Pack](https://re-pack.dev) Module Federation, receiving the session as props, with render errors contained.
 
-Tokens are never put in URLs or pre-injected into pages, and are masked (`***`) in every log line.
+Tokens are never put in URLs or pre-injected into pages, and the library masks them (`***`) in every log line it emits. Anything a mini app itself logs is forwarded as is.
 
 ## Install
 
